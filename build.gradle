@@ -1,0 +1,45 @@
+buildscript {
+    repositories {
+        maven { url = 'https://files.minecraftforge.net/maven' }
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:3.+'
+    }
+}
+
+plugins {
+    id 'org.spongepowered.plugin' version '0.8.1'
+}
+        
+apply plugin: 'net.minecraftforge.gradle'
+// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
+//apply plugin: 'eclipse'
+//apply plugin: 'maven-publish'
+
+group = pluginGroup
+version = pluginVersion
+
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+
+minecraft {
+    mappings channel: 'snapshot', version: '20171003-1.12'
+}
+
+repositories {
+    maven { url 'https://m2.objectdb.com' }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2854'
+    compile 'org.spongepowered:spongeapi:7.2.0'
+    compile 'com.objectdb:objectdb:2.8.3'
+    compile 'org.eclipse.persistence:javax.persistence:2.1.0'
+    compile 'javax.transaction:jta:1.1'
+    implementation files('librerias/Pixelmon-1.12.2-8.0.2-server.jar')
+}
+
+sponge.plugin.id = pluginId
+
+
